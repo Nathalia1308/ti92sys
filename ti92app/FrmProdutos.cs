@@ -25,5 +25,44 @@ namespace ti92app
             produto.Inserir();
             txtId.Text = produto.Id.ToString();
         }
+
+        private void FrmProdutos_Load(object sender, EventArgs e)
+        {
+            var lista = Produto.Listar();
+            int linha = 0;
+            foreach (var item in lista)
+            {
+                dtgLista.Rows.Add();
+                dtgLista.Rows[linha].Cells[0].Value = item.Id;
+                dtgLista.Rows[linha].Cells[1].Value = item.CodBar;
+                dtgLista.Rows[linha].Cells[2].Value = item.Descricao;
+                dtgLista.Rows[linha].Cells[3].Value = item.Unidade;
+                dtgLista.Rows[linha].Cells[4].Value = item.Preco;
+                dtgLista.Rows[linha].Cells[5].Value = item.Desconto;
+                dtgLista.Rows[linha].Cells[6].Value = item.Descontinuado; 
+                linha ++;
+
+            }
+            
+        }
+        private void dtgLista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtId.Text = dtgLista.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtCodBar.Text = dtgLista.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtDescricao.Text = dtgLista.Rows[e.RowIndex].Cells[2].Value.ToString();
+            cmbUnidade.Text = dtgLista.Rows[e.RowIndex].Cells[3].Value.ToString();
+            mskPreco.Text = dtgLista.Rows[e.RowIndex].Cells[4].Value.ToString();
+            mskDesconto.Text = dtgLista.Rows[e.RowIndex].Cells[5].Value.ToString();
+            chkDescontinuado.Checked = (bool)dtgLista.Rows[e.RowIndex].Cells[6].Value;
+            chkDescontinuado.Enabled = true;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new Produto(int.Parse(txtId.Text), txtDescricao.Text, cmbUnidade.Text, txtCodBar.Text, double.Parse(mskPreco.Text), double.Parse(mskDesconto.Text), chkDescontinuado.Checked);
+            produto.Atualizar();
+            MessageBox.Show("Produto atualizado com sucesso!");
+            FrmProdutos_Load(sender, e);
+        }
     }
 }

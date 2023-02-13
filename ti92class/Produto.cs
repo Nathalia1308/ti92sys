@@ -72,8 +72,8 @@ namespace ti92class
                 lista.Add(new Produto(
                  dr.GetInt32(0),
                  dr.GetString(1),
-                 dr.GetString(3),
                  dr.GetString(2),
+                 dr.GetString(3),
                  dr.GetDouble(4),
                  dr.GetDouble(5),
                  dr.GetBoolean(6)

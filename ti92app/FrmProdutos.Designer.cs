@@ -85,7 +85,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(46, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(694, 244);
+            this.groupBox1.Size = new System.Drawing.Size(733, 244);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PRODUTO";
@@ -199,6 +199,7 @@
             this.btnEditar.Text = "EDITAR";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAdicionar
             // 
@@ -305,8 +306,10 @@
             this.dtgLista.Name = "dtgLista";
             this.dtgLista.ReadOnly = true;
             this.dtgLista.RowHeadersVisible = false;
-            this.dtgLista.Size = new System.Drawing.Size(700, 226);
+            this.dtgLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgLista.Size = new System.Drawing.Size(739, 226);
             this.dtgLista.TabIndex = 1;
+            this.dtgLista.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgLista_CellDoubleClick);
             // 
             // clnId
             // 
@@ -314,6 +317,7 @@
             this.clnId.HeaderText = "ID";
             this.clnId.Name = "clnId";
             this.clnId.ReadOnly = true;
+            this.clnId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clnId.Width = 60;
             // 
             // clnCodbar
@@ -322,6 +326,7 @@
             this.clnCodbar.HeaderText = "CODBAR";
             this.clnCodbar.Name = "clnCodbar";
             this.clnCodbar.ReadOnly = true;
+            this.clnCodbar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // clnDescricao
             // 
@@ -329,7 +334,8 @@
             this.clnDescricao.HeaderText = "DESCRIÇÃO";
             this.clnDescricao.Name = "clnDescricao";
             this.clnDescricao.ReadOnly = true;
-            this.clnDescricao.Width = 230;
+            this.clnDescricao.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clnDescricao.Width = 260;
             // 
             // clnUnidade
             // 
@@ -337,7 +343,7 @@
             this.clnUnidade.HeaderText = "UND";
             this.clnUnidade.Name = "clnUnidade";
             this.clnUnidade.ReadOnly = true;
-            this.clnUnidade.Width = 60;
+            this.clnUnidade.Width = 65;
             // 
             // clnPreco
             // 
@@ -365,7 +371,7 @@
             // 
             this.txtBuscar.Location = new System.Drawing.Point(117, 305);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(623, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(662, 20);
             this.txtBuscar.TabIndex = 2;
             // 
             // label7
@@ -382,7 +388,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 614);
+            this.ClientSize = new System.Drawing.Size(909, 614);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dtgLista);
@@ -390,6 +396,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmProdutos";
             this.Text = "PRODUTOS";
+            this.Load += new System.EventHandler(this.FrmProdutos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgLista)).EndInit();
@@ -419,6 +426,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtgLista;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCodbar;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDescricao;
@@ -426,7 +435,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnPreco;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDesconto;
         private System.Windows.Forms.DataGridViewCheckBoxColumn clnDescontinuado;
-        private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.Label label7;
     }
 }
