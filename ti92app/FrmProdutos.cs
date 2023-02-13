@@ -64,5 +64,10 @@ namespace ti92app
             MessageBox.Show("Produto atualizado com sucesso!");
             FrmProdutos_Load(sender, e);
         }
+
+        private void dtgLista_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            int id = (int)dtgLista.Rows[dtgLista.CurrentRow.Index].Cells[0].Value;
+        }
     }
 }

@@ -310,6 +310,7 @@
             this.dtgLista.Size = new System.Drawing.Size(739, 226);
             this.dtgLista.TabIndex = 1;
             this.dtgLista.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgLista_CellDoubleClick);
+            this.dtgLista.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dtgLista_UserDeletedRow);
             // 
             // clnId
             // 
