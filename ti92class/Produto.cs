@@ -24,8 +24,7 @@ namespace ti92class
         public Produto()
         {
         }
-        public Produto(int id, string descricao, string unidade, string codBar, double preco, double desconto, 
-            bool descontinuado=false)
+        public Produto(int id, string descricao, string unidade, string codBar, double preco, double desconto, bool descontinuado=false)
         {
             Id = id;
             Descricao = descricao;
@@ -36,8 +35,7 @@ namespace ti92class
             Descontinuado = descontinuado;
         }
 
-        public Produto(string descricao, string unidade, string codBar, double preco, double desconto, 
-            bool descontinuado=false)
+        public Produto(string descricao, string unidade, string codBar, double preco, double desconto, bool descontinuado=false)
         {
             Descricao = descricao;
             Unidade = unidade;

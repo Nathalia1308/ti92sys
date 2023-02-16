@@ -60,5 +60,19 @@ namespace ti92class
             }
             return telefone;
         }
+        //public bool Arquivar(int _id)
+        //{
+        //    var cmd = Banco.Abrir();
+        //    cmd.CommandText = "update clientes set ativo = 0 where id = " + Id;
+        //    bool result = cmd.ExecuteNonQuery() == 1 ? true : false;
+        //    return result;
+        //}
+        //public bool Restaurar(int _id)
+        //{
+        //    var cmd = Banco.Abrir();
+        //    cmd.CommandText = "update telefones set ativo = 1 where id = " + Id;
+        //    bool result = cmd.ExecuteNonQuery() == 1 ? true : false;
+        //    return result;
+        //}
     }
 }
