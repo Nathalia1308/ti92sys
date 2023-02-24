@@ -20,9 +20,9 @@ namespace ti92app
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            //Cliente cliente = new Cliente(txtNome.Text, txtCpf.Text, txtEmail.Text, DateTime.Parse(txtDataCli.Text), chkAtivoCli.Checked);
-            //cliente.Inserir();
-            //txtId.Text = cliente.Id.ToString();
+            Cliente cliente = new Cliente(txtNome.Text, txtCpf.Text, txtEmail.Text, DateTime.Parse(txtDataCli.Text), chkAtivoCli.Checked);
+            cliente.Inserir();
+            txtId.Text = cliente.Id.ToString();
         }
 
 
