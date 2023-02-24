@@ -61,6 +61,7 @@ namespace ti92class
             {
                 iten.Id = dr.GetInt32(0);
                 iten.Produto = Produto.ObterPorId(dr.GetInt32(2));
+
                 iten.Quantidade = dr.GetDouble(4);
                 iten.Desconto = dr.GetDouble(5);
             }
