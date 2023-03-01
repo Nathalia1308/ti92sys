@@ -70,7 +70,7 @@ namespace ti92class
         {
             List<Endereco> lista = new List<Endereco>();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select estado, cidade, bairro from enderecos where cliente_id" + cliente_id;
+            cmd.CommandText = "select estado, cidade, bairro from enderecos where cliente_id =" + cliente_id;
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

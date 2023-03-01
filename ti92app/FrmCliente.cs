@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ti92class;
 
+
 namespace ti92app
 {
     public partial class FrmCliente : Form
@@ -20,7 +21,7 @@ namespace ti92app
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente(txtNome.Text, txtCpf.Text, txtEmail.Text, DateTime.Parse(txtDataCli.Text), chkAtivoCli.Checked);
+            Cliente cliente = new Cliente(txtNome.Text, txtCpf.Text, txtEmail.Text);
             cliente.Inserir();
             txtId.Text = cliente.Id.ToString();
         }
@@ -28,21 +29,21 @@ namespace ti92app
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-            //    var lista = Cliente.Listar();
-            //    int linha = 0;
-            //    foreach (var item in lista)
-            //    {
-            //        dtgCliente.Rows.Add();
-            //        dtgCliente.Rows[linha].Cells[0].Value = item.Id;
-            //        dtgCliente.Rows[linha].Cells[1].Value = item.Nome;
-            //        dtgCliente.Rows[linha].Cells[2].Value = item.Cpf;
-            //        dtgCliente.Rows[linha].Cells[3].Value = item.Telefones;
-            //        dtgCliente.Rows[linha].Cells[4].Value = item.Enderecos;
-            //        dtgCliente.Rows[linha].Cells[5].Value = item.Email;
-            //        dtgCliente.Rows[linha].Cells[6].Value = item.Data;
-            //        dtgCliente.Rows[linha].Cells[7].Value = item.Ativo;
-            //        linha++;
-            //    }
+            var lista = Cliente.Listar();
+            int linha = 0;
+            foreach (var item in lista)
+            {
+                dtgCliente.Rows.Add();
+                dtgCliente.Rows[linha].Cells[0].Value = item.Id;
+                dtgCliente.Rows[linha].Cells[1].Value = item.Nome;
+                dtgCliente.Rows[linha].Cells[2].Value = item.Cpf;
+                dtgCliente.Rows[linha].Cells[3].Value = item.Telefones;
+                dtgCliente.Rows[linha].Cells[4].Value = item.Enderecos;
+                dtgCliente.Rows[linha].Cells[5].Value = item.Email;
+                dtgCliente.Rows[linha].Cells[6].Value = item.Data;
+                dtgCliente.Rows[linha].Cells[7].Value = item.Ativo;
+                linha++;
+            }
         }
 
         private void dtgCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -76,10 +77,10 @@ namespace ti92app
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            //Cliente cliente = new Cliente(int.Parse(txtId.Text), txtNome.Text, txtCpf.Text, txtEmail.Text, DateTime.Parse(txtDataCli.Text), chkAtivoCli.Checked, Telefone.ListarPorCliente(int.Parse(txtId.Text)),Endereco.ListarPorCliente(int.Parse(txtId.Text)));
-            //cliente.Atualizar();
-            //MessageBox.Show("Cliente Atualizado com sucesso!");
-            //FrmCliente_Load(sender, e);
+            Cliente cliente = new Cliente(int.Parse(txtId.Text), txtNome.Text, txtCpf.Text, txtEmail.Text, DateTime.Parse(txtDataCli.Text), chkAtivoCli.Checked, Telefone.ListarPorCliente(int.Parse(txtId.Text)), Endereco.ListarPorCliente(int.Parse(txtId.Text)));
+            cliente.Atualizar();
+            MessageBox.Show("Cliente Atualizado com sucesso!");
+            FrmCliente_Load(sender, e);
         }
 
         private void btnAcrescentar_Click(object sender, EventArgs e)

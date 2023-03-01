@@ -50,15 +50,17 @@ namespace ti92class
         public void Inserir()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert pedidos (data, status, desconto, hashcode, cliente_id, usuario_id) values (default, default, 0, @hashcode, @client, @usuar)";
+            cmd.CommandText = "insert pedidos (data, status, desconto, hashcode, cliente_id, usuario_id) values (default, default, 0, @hashcode, @client, @user)";
            
             cmd.Parameters.Add("@client", MySqlDbType.Int32).Value = Cliente.Id;
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = Usuario.Id;
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "update pedidos set hashcode = @hashcode + '(select @@identity)' where id = (select @@identity)";
-            cmd.Parameters.Clear();
+            cmd.CommandText = "select @@identiy";
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
             Random rand = new Random();
-            cmd.Parameters.Add("@hashcode", MySqlDbType.VarChar).Value = "P"+rand.Next(10001,99999).ToString();
+            string hash = "P" + Id + rand.Next(10001, 99999);
+            Hashcode = hash;
+            cmd.CommandText = "update pedidos set hashcode = '"+hash+"' where id = "+Id;
             cmd.ExecuteNonQuery();
         }
         public static List<Pedido> Listar()
@@ -130,9 +132,9 @@ namespace ti92class
             cmd.CommandText = "update pedidos set arquivado_em = null where id =;" + id;
             cmd.ExecuteNonQuery();
         }
-        public double ObterTotal()
-        {
+        //public double ObterTotal()
+        //{
 
-        }
+        //}
     }
 }

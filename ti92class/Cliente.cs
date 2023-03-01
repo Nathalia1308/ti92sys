@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Asn1.X509;
 
 namespace ti92class
 {
@@ -33,20 +32,19 @@ namespace ti92class
             Telefones = telefones;
             Enderecos = enderecos;
         }
-
-        public Cliente(string nome, string cpf, string email, DateTime data, bool ativo)
+        public Cliente(string nome, string cpf, string email)
         {
             Nome = nome;
             Cpf = cpf;
             Email = email;
-            Data = data;
-            Ativo = ativo;
+
         }
         public Cliente(int id)
         {
             Telefones = Telefone.ListarPorCliente(id);
             Enderecos = Endereco.ListarPorCliente(id);
         }
+
         public void Inserir()
         {
             var cmd = Banco.Abrir();
@@ -69,7 +67,7 @@ namespace ti92class
         {
             List<Cliente> lista = new List<Cliente>();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from clientes orde by nome asc";
+            cmd.CommandText = "select * from clientes order by nome asc";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -96,10 +94,10 @@ namespace ti92class
             }
             return cliente;
         }
-        public void Atualizar(Cliente cliente)
+        public void Atualizar()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "update clientes set nome = '" + cliente.Nome + "', cpf = '" + cliente.Cpf + "', email = '" + cliente.Email + "', datacad =  '" + cliente.Data + "', ativo" + cliente.Ativo;
+            cmd.CommandText = "update clientes set nome = '" + Nome + "', cpf = '" + Cpf + "', email = '" + Email + "', datacad =  '" + Data + "', ativo" + Ativo;
             cmd.ExecuteNonQuery();
         }
         public static List<Cliente> BuscarPorNome(string _parte)
