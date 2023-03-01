@@ -81,7 +81,7 @@ namespace ti92class
                 usuario.Id = dr.GetInt32(0);
                 usuario.Nome= dr.GetString(1);
                 usuario.Email= dr.GetString(2);
-                Nivel.ObterPorId(dr.GetInt32(3));
+                Nivel.ObterPorId(dr.GetInt32(4));
                 usuario.Senha= dr.GetString(4);
                 usuario.Ativo = dr.GetBoolean(5);
             }

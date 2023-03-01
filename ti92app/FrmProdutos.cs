@@ -69,5 +69,7 @@ namespace ti92app
         {
             int id = (int)dtgLista.Rows[dtgLista.CurrentRow.Index].Cells[0].Value;
         }
+
+       
     }
 }

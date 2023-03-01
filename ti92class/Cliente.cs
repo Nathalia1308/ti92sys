@@ -103,7 +103,7 @@ namespace ti92class
         public static List<Cliente> BuscarPorNome(string _parte)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from clientes where nome like '%" + _parte + "%' orde by nome; ";
+            cmd.CommandText = "select * from clientes where nome like '%" + _parte + "%' order by nome; ";
             var dr = cmd.ExecuteReader();
             List<Cliente> lista = new List<Cliente>();
             while (dr.Read())

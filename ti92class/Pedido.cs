@@ -50,24 +50,24 @@ namespace ti92class
         public void Inserir()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert pedidos (data, status, desconto, hashcode, cliente_id, usuario_id) values (default, default, 0, @hashcode, @client, @user)";
-           
+            cmd.CommandText = "insert pedidos (data, status, desconto, cliente_id, usuario_id) " +
+                "values (default, default, 0, @client, @user);";
             cmd.Parameters.Add("@client", MySqlDbType.Int32).Value = Cliente.Id;
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = Usuario.Id;
             cmd.ExecuteNonQuery();
-            cmd.CommandText = "select @@identiy";
+            cmd.CommandText = "select @@identity";
             Id = Convert.ToInt32(cmd.ExecuteScalar());
             Random rand = new Random();
             string hash = "P" + Id + rand.Next(10001, 99999);
             Hashcode = hash;
-            cmd.CommandText = "update pedidos set hashcode = '"+hash+"' where id = "+Id;
+            cmd.CommandText = "update pedidos set hashcode = '" + hash + "' where id =" + Id;
             cmd.ExecuteNonQuery();
         }
         public static List<Pedido> Listar()
         {
             List<Pedido> list = new List<Pedido>();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from pedidos where arquivado_em is null ord by id desc;";
+            cmd.CommandText = "select * from pedidos where arquivado_em is null order by id desc;";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -80,7 +80,7 @@ namespace ti92class
         {
             List<Pedido> list = new List<Pedido>();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from pedidos where arquivado_em is not null ord by id desc;";
+            cmd.CommandText = "select * from pedidos where arquivado_em is not null order by id desc;";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
