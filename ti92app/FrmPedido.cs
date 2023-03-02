@@ -115,7 +115,7 @@ namespace ti92app
         private void txtId_TextChanged(object sender, EventArgs e)
         {
             btnNovo.Enabled = false;
-           // ItemPedido item = ItemPedido.BuscarPorProdutoPedido();
+            ItemPedido item = ItemPedido.BuscarPorProdutoPedido();
 
         }
     }
