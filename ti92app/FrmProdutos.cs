@@ -70,6 +70,9 @@ namespace ti92app
             int id = (int)dtgLista.Rows[dtgLista.CurrentRow.Index].Cells[0].Value;
         }
 
-       
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace ti92app
 {
     public partial class FrmPedido : Form
     {
+        private double DescontoMax { get; set; }
         public FrmPedido()
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace ti92app
         {
             Pedido pedido = new Pedido(Cliente.ObterPorId((int)cmbCliente.SelectedValue), Usuario.ObterPorId((int)cmbUsuario.SelectedValue));
             pedido.Inserir();
-            lblStatus.Text = pedido.Status.ToString()+" - "+pedido.Hashcode;
+            lblStatus.Text = pedido.Status.ToString()+ " - " +pedido.Hashcode;
             txtId.Text = pedido.Id.ToString();
             btnInserir.Enabled = false;
             grbProduto.Enabled = true;
@@ -42,14 +43,24 @@ namespace ti92app
 
         private void txtIdProd_TextChanged(object sender, EventArgs e)
         {
-            if (txtId.Text != string.Empty)
+            if (txtIdProd.Text != string.Empty)
             {
-                Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
+                Produto produto = Produto.ObterPorId(int.Parse(txtIdProd.Text));
                 if (produto.Id > 0)
                 {
                     txtDescricao.Text = produto.Descricao;
                     txtUnidade.Text = produto.Unidade;
                     txtPreco.Text = produto.Preco.ToString();
+                    if (produto.Desconto > 0)
+                    {
+                        DescontoMax = produto.Desconto * produto.Preco; 
+                        lblDescMax.Text = DescontoMax.ToString("#0.00");
+                        txtDesconto.Enabled = true;
+                    }
+                    else
+                    {
+                        txtDesconto.Enabled = false;
+                    }
                 }
                 else
                 {
@@ -61,6 +72,7 @@ namespace ti92app
                 txtDescricao.Clear();
                 txtUnidade.Clear();
                 txtPreco.Clear();
+                lblDescMax.Text = "";
             }
         }
 
@@ -68,6 +80,7 @@ namespace ti92app
         {
             grbDados.Enabled = true;
             btnNovo.Enabled = false;
+            txtId.Enabled = false;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -98,6 +111,12 @@ namespace ti92app
                 total += totalIten;
             }
             txtTotal.Text = total.ToString("##0.00");
+        }
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+            btnNovo.Enabled = false;
+           // ItemPedido item = ItemPedido.BuscarPorProdutoPedido();
+
         }
     }
 }

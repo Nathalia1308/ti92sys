@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbDados = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbUsuario = new System.Windows.Forms.ComboBox();
@@ -54,10 +54,6 @@
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgvItens = new System.Windows.Forms.DataGridView();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.clnSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +62,12 @@
             this.clnQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblDescMax = new System.Windows.Forms.Label();
             this.grbDados.SuspendLayout();
             this.grbProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
@@ -149,9 +151,11 @@
             this.txtId.Size = new System.Drawing.Size(100, 31);
             this.txtId.TabIndex = 2;
             this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // grbProduto
             // 
+            this.grbProduto.Controls.Add(this.lblDescMax);
             this.grbProduto.Controls.Add(this.label9);
             this.grbProduto.Controls.Add(this.txtDesconto);
             this.grbProduto.Controls.Add(this.label8);
@@ -309,6 +313,75 @@
             this.dgvItens.Size = new System.Drawing.Size(983, 211);
             this.dgvItens.TabIndex = 4;
             // 
+            // clnSeq
+            // 
+            this.clnSeq.Frozen = true;
+            this.clnSeq.HeaderText = "#";
+            this.clnSeq.Name = "clnSeq";
+            this.clnSeq.ReadOnly = true;
+            this.clnSeq.Width = 20;
+            // 
+            // clnCodigo
+            // 
+            this.clnCodigo.Frozen = true;
+            this.clnCodigo.HeaderText = "Cód";
+            this.clnCodigo.Name = "clnCodigo";
+            this.clnCodigo.ReadOnly = true;
+            this.clnCodigo.Width = 70;
+            // 
+            // clnDescricao
+            // 
+            this.clnDescricao.Frozen = true;
+            this.clnDescricao.HeaderText = "Descrição";
+            this.clnDescricao.Name = "clnDescricao";
+            this.clnDescricao.ReadOnly = true;
+            this.clnDescricao.Width = 525;
+            // 
+            // clnUnidade
+            // 
+            this.clnUnidade.Frozen = true;
+            this.clnUnidade.HeaderText = "Und";
+            this.clnUnidade.Name = "clnUnidade";
+            this.clnUnidade.ReadOnly = true;
+            this.clnUnidade.Width = 55;
+            // 
+            // clnPreco
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.clnPreco.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clnPreco.Frozen = true;
+            this.clnPreco.HeaderText = "Preço R$";
+            this.clnPreco.Name = "clnPreco";
+            this.clnPreco.ReadOnly = true;
+            this.clnPreco.Width = 85;
+            // 
+            // clnQuantidade
+            // 
+            this.clnQuantidade.Frozen = true;
+            this.clnQuantidade.HeaderText = "Qtd";
+            this.clnQuantidade.Name = "clnQuantidade";
+            this.clnQuantidade.ReadOnly = true;
+            this.clnQuantidade.Width = 65;
+            // 
+            // clnDesconto
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.clnDesconto.DefaultCellStyle = dataGridViewCellStyle5;
+            this.clnDesconto.Frozen = true;
+            this.clnDesconto.HeaderText = "Desconto";
+            this.clnDesconto.Name = "clnDesconto";
+            this.clnDesconto.ReadOnly = true;
+            this.clnDesconto.Width = 60;
+            // 
+            // clnTotal
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.clnTotal.DefaultCellStyle = dataGridViewCellStyle6;
+            this.clnTotal.Frozen = true;
+            this.clnTotal.HeaderText = "Total R$";
+            this.clnTotal.Name = "clnTotal";
+            this.clnTotal.ReadOnly = true;
+            // 
             // txtTotal
             // 
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -350,80 +423,32 @@
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "Sts";
             // 
-            // clnSeq
+            // button1
             // 
-            this.clnSeq.Frozen = true;
-            this.clnSeq.HeaderText = "#";
-            this.clnSeq.Name = "clnSeq";
-            this.clnSeq.ReadOnly = true;
-            this.clnSeq.Width = 20;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(994, 566);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Fechar";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // clnCodigo
+            // lblDescMax
             // 
-            this.clnCodigo.Frozen = true;
-            this.clnCodigo.HeaderText = "Cód";
-            this.clnCodigo.Name = "clnCodigo";
-            this.clnCodigo.ReadOnly = true;
-            this.clnCodigo.Width = 70;
-            // 
-            // clnDescricao
-            // 
-            this.clnDescricao.Frozen = true;
-            this.clnDescricao.HeaderText = "Descrição";
-            this.clnDescricao.Name = "clnDescricao";
-            this.clnDescricao.ReadOnly = true;
-            this.clnDescricao.Width = 525;
-            // 
-            // clnUnidade
-            // 
-            this.clnUnidade.Frozen = true;
-            this.clnUnidade.HeaderText = "Und";
-            this.clnUnidade.Name = "clnUnidade";
-            this.clnUnidade.ReadOnly = true;
-            this.clnUnidade.Width = 55;
-            // 
-            // clnPreco
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.clnPreco.DefaultCellStyle = dataGridViewCellStyle1;
-            this.clnPreco.Frozen = true;
-            this.clnPreco.HeaderText = "Preço R$";
-            this.clnPreco.Name = "clnPreco";
-            this.clnPreco.ReadOnly = true;
-            this.clnPreco.Width = 85;
-            // 
-            // clnQuantidade
-            // 
-            this.clnQuantidade.Frozen = true;
-            this.clnQuantidade.HeaderText = "Qtd";
-            this.clnQuantidade.Name = "clnQuantidade";
-            this.clnQuantidade.ReadOnly = true;
-            this.clnQuantidade.Width = 65;
-            // 
-            // clnDesconto
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.clnDesconto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clnDesconto.Frozen = true;
-            this.clnDesconto.HeaderText = "Desconto";
-            this.clnDesconto.Name = "clnDesconto";
-            this.clnDesconto.ReadOnly = true;
-            this.clnDesconto.Width = 60;
-            // 
-            // clnTotal
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.clnTotal.DefaultCellStyle = dataGridViewCellStyle3;
-            this.clnTotal.Frozen = true;
-            this.clnTotal.HeaderText = "Total R$";
-            this.clnTotal.Name = "clnTotal";
-            this.clnTotal.ReadOnly = true;
+            this.lblDescMax.AutoSize = true;
+            this.lblDescMax.ForeColor = System.Drawing.Color.Red;
+            this.lblDescMax.Location = new System.Drawing.Point(372, 95);
+            this.lblDescMax.Name = "lblDescMax";
+            this.lblDescMax.Size = new System.Drawing.Size(13, 13);
+            this.lblDescMax.TabIndex = 16;
+            this.lblDescMax.Text = "_";
             // 
             // FrmPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 817);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.txtTotal);
@@ -483,5 +508,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnQuantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblDescMax;
     }
 }

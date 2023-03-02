@@ -50,8 +50,7 @@ namespace ti92class
         public void Inserir()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert pedidos (data, status, desconto, cliente_id, usuario_id) " +
-                "values (default, default, 0, @client, @user);";
+            cmd.CommandText = "insert pedidos (data, status, desconto, cliente_id, usuario_id) values (default, default, 0, @client, @user);";
             cmd.Parameters.Add("@client", MySqlDbType.Int32).Value = Cliente.Id;
             cmd.Parameters.Add("@user", MySqlDbType.Int32).Value = Usuario.Id;
             cmd.ExecuteNonQuery();

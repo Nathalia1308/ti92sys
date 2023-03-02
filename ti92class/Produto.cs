@@ -93,8 +93,8 @@ namespace ti92class
             {
                 produto.Id = dr.GetInt32(0);
                 produto.Descricao = dr.GetString(1);
-                produto.Unidade = dr.GetString(3);
-                produto.CodBar = dr.GetString(2);
+                produto.Unidade = dr.GetString(2);
+                produto.CodBar = dr.GetString(3);
                 produto.Preco = dr.GetDouble(4);
                 produto.Desconto = dr.GetDouble(5);
                 produto.Descontinuado = dr.GetBoolean(6);
@@ -106,7 +106,7 @@ namespace ti92class
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update produtos set descricao = '" + Descricao + "', unidade = '" + Unidade + "', covar dbar = '" + CodBar + "', preco = '" + Preco + "', desconto ='" + Desconto + "', descontinuado = '" + Descontinuado + "' where id = " + Id;
+            cmd.CommandText = "update produtos set descricao = '" + Descricao + "', unidade = '" + Unidade + "', codbar = '" + CodBar + "', preco = '" + Preco + "', desconto ='" + Desconto + "', descontinuado = '" + Descontinuado + "' where id = " + Id;
             cmd.ExecuteNonQuery();
         }
         public bool Arquivar(int _id) // arquivando
