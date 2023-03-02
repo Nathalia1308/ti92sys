@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ti92class;
+using static System.Windows.Forms.LinkLabel;
 
 namespace ti92app
 {
@@ -72,6 +73,7 @@ namespace ti92app
                 txtDescricao.Clear();
                 txtUnidade.Clear();
                 txtPreco.Clear();
+                txtDesconto.Clear();
                 lblDescMax.Text = "";
             }
         }
@@ -115,7 +117,35 @@ namespace ti92app
         private void txtId_TextChanged(object sender, EventArgs e)
         {
             btnNovo.Enabled = false;
-            ItemPedido item = ItemPedido.BuscarPorProdutoPedido();
+            if (txtId.Text != string.Empty)
+            {
+                ItemPedido item = ItemPedido.BuscarPorProdutoPedido(int.Parse(txtId.Text), int.Parse(txtIdProd.Text));
+                if (item.Id > 0)
+                    
+                {
+                  
+                }
+            }
+            else
+            {
+
+            }
+
+
+
+
+        }
+
+        private void txtQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            if (txtQuantidade.Text != string.Empty)
+            {
+                DescontoMax *= double.Parse(txtQuantidade.Text);
+            }
+        }
+
+        private void dgvItens_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
